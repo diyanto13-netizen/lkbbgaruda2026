@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    background-color: #0b1329;
+  }
+  body {
+    background-color: #0b1329;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, .font-heading {
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+    letter-spacing: -0.02em;
+  }
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom scrollbars for data tables and modals */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b1329;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2d4a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2b3d63;
+}
+
+/* Print Specific Rules for LKBB Garuda IV */
+@page {
+  size: auto;
+  margin: 10mm;
+}
+
+@media print {
+  /* Hide interactive UI elements */
+  nav, 
+  header, 
+  footer, 
+  .no-print, 
+  button, 
+  .tab-nav, 
+  .search-bar, 
+  .toast-container,
+  input,
+  select {
+    display: none !important;
+  }
+  
+  /* Reset document root to clean pure white paper without dark backgrounds or borders */
+  html, body, #root, #root > div, main {
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+  
+  /* Completely neutralize modal overlays and outer card dialogs */
+  .fixed,
+  .fixed.inset-0,
+  [class*="fixed inset-0"],
+  [class*="backdrop-blur"],
+  [class*="bg-black/"] {
+    position: static !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Printable Document Container */
+  .print-area {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Tables inside print area */
+  .print-area table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background: #ffffff !important;
+    border: 1.5px solid #000000 !important;
+  }
+
+  .print-area th,
+  .print-area td {
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+  }
+
+  .print-area thead {
+    background-color: #f8fafc !important;
+    color: #000000 !important;
+  }
+
+  /* Force background colors and borders in print preview */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .page-break-inside-avoid, 
+  tr, 
+  .print-area table {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .shadow-2xl, .shadow-xl, .shadow-lg, .shadow-md, .shadow-sm {
+    box-shadow: none !important;
+  }
+}
